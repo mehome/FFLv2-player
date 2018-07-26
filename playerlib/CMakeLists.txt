@@ -62,6 +62,7 @@ SET(LOCAL_SRC_FILES
    PlayerEvent.hpp;PlayerEvent.cpp
    PlayerConstant.hpp
    Player.hpp;Player.cpp
+   PlayerTrack.hpp;PlayerTrack.cpp
    PlayerInterface.hpp
    Statistic.hpp;Statistic.cpp         
    

@@ -43,7 +43,7 @@ namespace player {
 	class SDL2Module;
 
 
-
+	class FFLPlayerTrack;
 	class PlayerCore : public reader::ReaderStreamManager {
 		friend class NodeBase;
 		friend class FFLPlayer;
@@ -86,6 +86,12 @@ namespace player {
 		//
 		void setLoop(int32_t num);
 		int32_t getLoop();
+
+		//
+		// 是否开启track功能，用于分析每个节点的时间值
+		//
+		void startTrack();
+		void stopTrack();
 	protected:		
 		void onEvent(const FFL::sp<event::PlayerEvent> event);		
 	public:
@@ -155,7 +161,6 @@ namespace player {
 		//   音视频设备创建，删除系类函数
 		//////////////////////////////////////////////////////////////////////////////
 
-
 	private:	
 		FFL::TimeBase mAudioTb;
 
@@ -188,5 +193,11 @@ namespace player {
 		DeviceManager* getDeviceManager() const {
 			return mDeviceManager;
 		}
+
+	private:
+		//
+		// 分析追踪每一个节点的处理时间值
+		//
+		FFLPlayerTrack* mPlayerTrack;
 	};
 }

@@ -40,7 +40,7 @@ namespace player {
 	FFLPlayer::FFLPlayer(DeviceManager* mgr):mListener(NULL){		
 		mEventPrepare = new FFL::PipelineEvent(
 			new FFL::ClassMethodCallback<player::FFLPlayer>(this, &FFLPlayer::onPrepare));	
-
+		mTrackFlag = false;
 		mSpeed = 100;
 
 		mSurfaceHandle = NULL;		
@@ -206,6 +206,12 @@ namespace player {
 
 			FFL_SafeFree(mCore);
 			mCore = new PlayerCore(this);
+			if (mTrackFlag) {
+				mCore->startTrack();
+			}
+			else {
+				mCore->stopTrack();
+			}
 			mCore->setDeviceManager(mDevManager);
 
 			mFlag.resetFlags(FLAG_INIT);
@@ -372,6 +378,21 @@ namespace player {
 		}else {
 		}
 	}
+	//
+	//  是否启动跟踪每个节点的执行时间
+	//
+	void FFLPlayer::enableTrack(bool enable) {
+		mTrackFlag = enable;
+		if (mCore) {
+			if (mTrackFlag) {
+				mCore->startTrack();
+			}
+			else {
+				mCore->stopTrack();
+			}
+		}
+	}
+
 	//
 	//  是否prepated
 	//

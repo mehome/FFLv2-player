@@ -33,11 +33,13 @@
 #include "VideoStream.hpp"
 #include "DeviceManager.hpp"
 
+#include "PlayerTrack.hpp"
+
 namespace player {
 	PlayerCore::PlayerCore(FFL::PipelineEventFilter* eventFilter):mSpeed(100){
 		mDeviceManager = NULL;
 		mNextStreamId=0;
-		
+		mPlayerTrack = new FFLPlayerTrack();
 		mFileReader = NULL;
 		mMasterClock = NULL;
 		mVideoComposer = NULL;
@@ -54,6 +56,8 @@ namespace player {
 			reader::ReaderFactory::getInstance().destroyReader(mFileReader);
 		}
 		mPipeline = NULL;
+
+		FFL_SafeFree(mPlayerTrack);
 	}
 	status_t PlayerCore::init() {		
 		//
@@ -150,6 +154,15 @@ namespace player {
 	}
 	int32_t PlayerCore::getLoop() {
 		return mFileReader->getLoopNum();
+	}
+	//
+	// 是否开启track功能，用于分析每个节点的时间值
+	//
+	void PlayerCore::startTrack() {
+		mPipeline->setTrackStorage(mPlayerTrack);
+	}
+	void PlayerCore::stopTrack() {
+		mPipeline->setTrackStorage(NULL);
 	}
 	void PlayerCore::onEvent(const FFL::sp<event::PlayerEvent> event)
 	{

@@ -112,6 +112,10 @@ namespace player {
 		//  设置播放器一系列事件的回调
 		//
 		virtual void setListener(IPlayerListener* listener);
+		//
+		//  是否启动跟踪每个节点的执行时间
+		//
+		virtual void enableTrack(bool enable) ;
 	private:
 		bool isPrepared() const;
 		bool isStarted() const;
@@ -177,6 +181,10 @@ namespace player {
 		// 显示窗口句柄
 		//
 		SurfaceHandle mSurfaceHandle;		
+		//
+		// 是否跟踪执行时间
+		//
+		bool mTrackFlag;
 	};
 }
 #endif

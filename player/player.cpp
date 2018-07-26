@@ -185,9 +185,17 @@ void fastReverse(const char* args, void* userdata) {
 void loopNum(const char* args, void* userdata) {
 	player::FFLPlayer* player = (player::FFLPlayer*) userdata;
 	int32_t num = player->getLoop();
-	int32_t newNum=atoi(args);
+	int32_t newNum= args?atoi(args):0;
 	player->setLoop(newNum);
 	printf("set loop num old=%d new=%d  \n", num, newNum);
+}
+
+void track(const char* args, void* userdata) {
+	player::FFLPlayer* player = (player::FFLPlayer*) userdata;
+	int32_t num = player->getLoop();
+	int32_t enable = args? atoi(args) : 0;
+	player->enableTrack(enable!=0);
+	printf("enableTrack enable=%d  \n", (!!enable));
 }
 
 class TestListener : public player::IPlayerListener {
@@ -320,6 +328,7 @@ static CmdOption  gCmdOption[] = {
 	{ "[",0,fastReverse,"Slow down the playback speed" },
 
 	{ "loop",0,loopNum,"Set loop num. " },
+	{ "track",0,track,"enable/disable track." },
 	{ "help",0,help,"prinf help" },
 
 	{ 0,0,0,0 }

@@ -96,7 +96,7 @@ extern "C" int main(int argc ,const char* argv[]) {
 	FFL_LOG_INFO("start player");
 	playerMain();
 	FFL_LOG_INFO("quit player");
-	FFL_malloc_memory_dump();
+	FFL_dumpMemoryLeak();
 	getchar();
 
 	return 0;

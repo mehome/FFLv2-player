@@ -12,6 +12,7 @@
 */
 #include <stdio.h>
 #include <FFL_Commandline.h>
+#include <utils/FFL_File.hpp>
 #include "SDL2Module.hpp"
 #include "Player.hpp"
 
@@ -21,8 +22,7 @@
 static const char* getNextMovicUrl(bool next = true) {
 	static const char* gMovicUrl[] = {
 		"d://movic//sintel.ts",
-		"d://movic//test.avi",
-		"d://movic//zhuoyaoji.mp4",
+		"d://movic//test.avi",		
 	};
 
 	static int gMovicCount = 3;
@@ -43,8 +43,23 @@ static const char* getNextMovicUrl(bool next = true) {
 //
 void play(const char* args, void* userdata) {
 	printf("play: %s \n", args ? args : "null");
+
+	const char* url = 0;
+	if (args != NULL) {
+		url = args;
+		if (!FFL::fileIsExist(url)) {
+			printf("video not find url=%s \n", url);
+			return;		
+		}
+	}
+	else {
+		url = getNextMovicUrl();
+	}
+
+	printf("play video url=%s \n",url);
+
 	player::FFLPlayer* player = (player::FFLPlayer*) userdata;
-	player->setUrl(getNextMovicUrl());
+	player->setUrl(url);
 	player->prepare();
 }
 //
@@ -281,7 +296,7 @@ public:
 
 static void help(const char* args, void* userdata);
 static CmdOption  gCmdOption[] = {
-	{ "play",0,play,"play video " },
+	{ "play",0,play,"play video (file path)" },
 	{ "r",0,play,"play video " },
 	{ "R",0,play,"play video " },
 

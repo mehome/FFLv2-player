@@ -66,7 +66,7 @@ endif(MSVC)
 
 
 
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../bin)
 
 ADD_EXECUTABLE(player  ${LOCAL_SRC_FILES})
 
@@ -87,6 +87,6 @@ IF (WIN32)
 SET(OUTPUT_BIN ${EXECUTABLE_OUTPUT_PATH}${CMAKE_BUILD_TYPE})
 add_custom_command(TARGET player POST_BUILD    
     COMMAND echo "hi " ${CMAKE_BUILD_TYPE}
-    COMMAND ${CMAKE_COMMAND} -E copy_directory  ${CMAKE_CURRENT_SOURCE_DIR}/../third/FFmpeg3.3.5/output_win_dll/bin/  ${OUTPUT_BIN})
+    COMMAND ${CMAKE_COMMAND} -E copy_directory  ${CMAKE_CURRENT_SOURCE_DIR}/../third/FFmpeg3.3.5/output_win_dll/bin/  ${OUTPUT_BIN}/Debug/)
 ENDIF()
 

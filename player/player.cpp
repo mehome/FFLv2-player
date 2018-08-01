@@ -15,6 +15,7 @@
 #include <utils/FFL_File.hpp>
 #include "SDL2Module.hpp"
 #include "Player.hpp"
+#include <logsender/FFL_LogSender.hpp>
 
 //
 //  获取下一个视频url
@@ -213,6 +214,10 @@ void track(const char* args, void* userdata) {
 	printf("enableTrack enable=%d  \n", (!!enable));
 }
 
+void closeLog(const char* args, void* userdata) {
+	FFL_unhookLogSystem();
+}
+
 class TestListener : public player::IPlayerListener {
 public:
 	TestListener(player::FFLPlayer* player) :mPlayer(player) {
@@ -344,6 +349,7 @@ static CmdOption  gCmdOption[] = {
 
 	{ "loop",0,loopNum,"Set loop num. " },
 	{ "track",0,track,"enable/disable track." },
+	{ "closelog",0,closeLog,"close log sender." },
 	{ "help",0,help,"prinf help" },
 
 	{ 0,0,0,0 }

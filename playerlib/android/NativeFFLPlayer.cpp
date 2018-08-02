@@ -122,6 +122,8 @@ namespace android{
                 { "native_seekTo","(J)I",(void *)NativeFFLPlayer::seekTo },
                 { "native_getCurrentPosition","()J",(void *)NativeFFLPlayer::getCurrentPosition },
                 { "native_getDuration","()J",(void *)NativeFFLPlayer::getDuration },
+                { "native_setSpeed","(I)V",(void *)NativeFFLPlayer::setSpeed },
+                { "native_getSpeed","()I",(void *)NativeFFLPlayer::getSpeed },
                 { "native_setVolume","(I)V",(void *)NativeFFLPlayer::setVolume },
                 { "native_getVolume","()I",(void *)NativeFFLPlayer::getVolume },
                 { "native_setLoop","(I)V",(void *)NativeFFLPlayer::setLoop },

@@ -26,7 +26,7 @@ namespace player {
 
 			FFL::CMutex::Autolock l(mLock);			
 			mTrackFile->write((void*)data, strlen(data),&writed);
-			mTrackFile->write("\r",1,&writed);
+			mTrackFile->write((void*)"\r",1,&writed);
 		}
 	}
 

@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.4.1)
+SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE)
+
+if (MSVC)
+add_definitions("/wd4819")
+endif(MSVC)
+
+MESSAGE(STATUS "operation system is ${CMAKE_SYSTEM}")
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    MESSAGE(STATUS "current platform: Linux ")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    MESSAGE(STATUS "current platform: Windows")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+    MESSAGE(STATUS "current platform: FreeBSD")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Android")
+    MESSAGE(STATUS "current platform: Androidxxxx")
+	SET(ANDROID 1)
+ELSE ()
+    MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+
+ADD_SUBDIRECTORY(FFL-v2)
+ADD_SUBDIRECTORY(FFLv2-player)

@@ -47,7 +47,7 @@ INCLUDE_DIRECTORIES(
             ../../install/FFLv2-lib/include/
             ../third/FFmpeg3.3.5/include/ )
 LINK_DIRECTORIES(
-            ../third/FFmpeg3.3.5/output_android_static/)
+            ../third/FFmpeg3.3.5/output_android_static/ )
 
 ENDIF ()
 

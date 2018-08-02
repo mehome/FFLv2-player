@@ -35,7 +35,7 @@ extern "C" {
 #include <android/log.h>
 }
 
-extern "C" int fflv2PrintLog(int level,const char* tag,const char *format, va_list vaList){
+extern "C" int fflv2PrintLog(int level,const char* tag,const char *format, va_list vaList,void* userdata){
     __android_log_print(ANDROID_LOG_ERROR,tag?tag:"FFLv2",format,vaList);
     return 1;
 }
@@ -64,8 +64,8 @@ extern "C"  void ffmpegPrintLog(void *ptr, int level, const char *fmt, va_list v
 }
 
 void Loginit(){
-    FFL_LogSetLevel(FFL_LOG_LEVEL_ALL);
-    FFL_LogHook(fflv2PrintLog);
+    //FFL_LogSetLevel(FFL_LOG_LEVEL_ALL);
+    //FFL_LogHook(fflv2PrintLog,NULL);
     av_log_set_level(AV_LOG_DEBUG);
     av_log_set_callback(ffmpegPrintLog);
 }

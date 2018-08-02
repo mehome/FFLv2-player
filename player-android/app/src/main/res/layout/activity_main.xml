@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextureView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="play"
+        />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop"
+            />
+
+        <Button
+            android:id="@+id/btnPause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pause"
+            />
+        <Button
+            android:id="@+id/btnResume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resume"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+
+    <Button
+        android:id="@+id/btnPrepare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prepare"
+        />
+
+    <Button
+        android:id="@+id/btnSeturl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择视频文件"
+        />
+
+    </LinearLayout>
+    <RelativeLayout 
+         android:layout_width="match_parent"
+         android:layout_height="40dp"
+                    >
+
+        <EditText
+            android:id="@+id/edit_speed"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:inputType="phone|number"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edit_speed"
+            android:layout_marginRight="20dp"
+            android:text="设置速度"
+            />
+     </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <EditText
+            android:id="@+id/edit_loop"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:inputType="phone|number"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnLoop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edit_loop"
+            android:layout_marginRight="20dp"
+            android:text="设置循环"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <EditText
+            android:id="@+id/edit_volume"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:inputType="phone|number"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edit_volume"
+            android:layout_marginRight="20dp"
+            android:text="设置音量"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <EditText
+            android:id="@+id/edit_position"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:inputType="phone|number"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edit_position"
+            android:layout_marginRight="20dp"
+            android:text="设置位置seek"
+            />
+    </RelativeLayout>
+</LinearLayout>
